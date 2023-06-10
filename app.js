@@ -1,16 +1,6 @@
-product = (a, b) => {
-	return a * b;
-};
+const http = require('http')
+const server = http.createServer((req,res)=>{
+    
+})
 
-product(2, 3);
-
-let Student = {
-	firstName: "Sahil",
-	rollNo: "2275",
-	lastName: "Kumar",
-
-	full_name() {
-		console.log(`${this.firstName} ${this.lastName}`);
-	},
-};
-Student.full_name();
+server.listen(4000,()=>console.log(`My name is Sahil Kumar`))
