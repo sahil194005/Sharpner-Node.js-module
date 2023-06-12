@@ -1,30 +1,21 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
+const path = require("path");
+const rootDir = require("../util/path");
 
 router.get("/add-product", (req, res, next) => {
-	res.send(`<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
-        <form action="/admin/product" method="POST">
-            <label for ="inputText">Text</label>
-            <input type="text" name = text id = "inputText">
-            <label for ="inputSize">Size</label>
-            <input type="num" name = size id = "inputSize">
-            <button type  = "submit">submit</button>
-        </form>
-    </body>
-    </html>`);
+	res.sendFile(path.join(rootDir, "views", "add-product.html"));
 });
 
-router.post("/product", (req, res, next) => {
-    console.log(req.body)
+router.post("/add-product", (req, res, next) => {
 	res.redirect("/");
 });
 
+router.get("/contact-us", (req, res, next) => {
+	res.sendFile(path.join(rootDir, "views", "contact-us.html"));
+});
 
-module.exports =router
+router.get('/success',(req,res,next)=>{
+	res.sendFile(path.join(rootDir,'views','form-success.html'))
+})
+module.exports = router;
