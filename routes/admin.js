@@ -1,21 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const path = require("path");
-const rootDir = require("../util/path");
 
-router.get("/add-product", (req, res, next) => {
-	res.sendFile(path.join(rootDir, "views", "add-product.html"));
-});
+const { addProducts, redirect, contactUs, successPage } = require("../controllers/ctrl-admin");
 
-router.post("/add-product", (req, res, next) => {
-	res.redirect("/");
-});
+router.get("/add-product",addProducts);
 
-router.get("/contact-us", (req, res, next) => {
-	res.sendFile(path.join(rootDir, "views", "contact-us.html"));
-});
+router.post("/add-product",redirect);
 
-router.get('/success',(req,res,next)=>{
-	res.sendFile(path.join(rootDir,'views','form-success.html'))
-})
+router.get("/contact-us",contactUs);
+
+router.get("/success",successPage);
+
 module.exports = router;
